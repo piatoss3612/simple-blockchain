@@ -1,6 +1,7 @@
 go 1.21.0
 
 use (
-	./medium
+	./medium/section1
+	./medium/section2
 	./nomad/go
 )
