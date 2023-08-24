@@ -3,5 +3,6 @@ go 1.21.0
 use (
 	./medium/section1
 	./medium/section2
+	./medium/section3
 	./nomad/go
 )
