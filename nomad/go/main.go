@@ -23,6 +23,22 @@ func NewBlock(prevHash string, data string, height int) Block {
 	return block
 }
 
+func (b Block) Hash() string {
+	return b.hash
+}
+
+func (b Block) PrevHash() string {
+	return b.prevHash
+}
+
+func (b Block) Data() string {
+	return b.data
+}
+
+func (b Block) Height() int {
+	return b.height
+}
+
 func calculateHash(prevHash string, data string, height int) string {
 	hash := sha256.New()
 	_, _ = hash.Write([]byte(fmt.Sprintf("%s%d%s", prevHash, height, data)))
@@ -34,9 +50,7 @@ type Blockchain struct {
 }
 
 func NewBlockchain() Blockchain {
-	return Blockchain{
-		blocks: make([]Block, 0),
-	}
+	return Blockchain{}
 }
 
 func (bc *Blockchain) AddBlock(data string) {
@@ -65,7 +79,11 @@ func main() {
 	blockchain.AddBlock("Second block")
 	blockchain.AddBlock("Third block")
 
-	blocks := blockchain.GetBlocks()
+	blocks := blockchain.GetBlocks() // Get blocks
+
+	blocks[0].data = "Genesis block" // Try to change data
+
+	blocks = blockchain.GetBlocks() // Get blocks again
 
 	for _, block := range blocks {
 		fmt.Printf("Prev. hash: %s\n", block.prevHash)
