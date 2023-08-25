@@ -4,5 +4,6 @@ use (
 	./medium/section1
 	./medium/section2
 	./medium/section3
+	./medium/section4
 	./nomad/go
 )
